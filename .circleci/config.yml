@@ -64,6 +64,6 @@ jobs:
       - image: 'cimg/base:stable'
     steps:
       - checkout
-      - cloudrun/init
-      - cloudrun/build:
+      - cloud-run/init
+      - cloud-run/build:
           tag: 'gcr.io/${GOOGLE_PROJECT_ID}/test-${CIRCLE_SHA1}'
