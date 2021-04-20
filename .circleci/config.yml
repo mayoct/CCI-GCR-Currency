@@ -5,13 +5,14 @@ orbs:
   cloud-run: circleci/gcp-cloud-run@1.0.2
 
 workflows:
+  version: 2
   my_workflow_for_currency:
     jobs:
       - build_api
-      - test_api
+      - test_api:
           requires:
             - build_api
-      - deploy_api
+      - deploy_api:
           requires:
             - test_api
 
