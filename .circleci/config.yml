@@ -13,7 +13,6 @@ workflows:
           requires:
             - build_api
       - deploy_api:
-          context: gcr
           requires:
             - test_api
 
@@ -62,9 +61,15 @@ jobs:
           path: ./coverage
   deploy_api:
     docker:
-      - image: 'cimg/base:stable'
+      - image: 'google/cloud-sdk'
     steps:
       - checkout
       - cloud-run/init
       - cloud-run/build:
           tag: 'gcr.io/${GOOGLE_PROJECT_ID}/test-${CIRCLE_SHA1}'
+      - cloud-run/deploy:
+          image: 'gcr.io/${GOOGLE_PROJECT_ID}/test-${CIRCLE_SHA1}'
+          platform: managed
+          region: us-central1
+          service-name: cci-gcr-currency
+          unauthenticated: true
