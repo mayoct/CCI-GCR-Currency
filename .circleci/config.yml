@@ -13,6 +13,7 @@ workflows:
           requires:
             - build_api
       - deploy_api:
+          context: gcr
           requires:
             - test_api
 
