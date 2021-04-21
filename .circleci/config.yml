@@ -66,10 +66,10 @@ jobs:
       - checkout
       - cloud-run/init
       - cloud-run/build:
-          tag: 'gcr.io/${GOOGLE_PROJECT_ID}/test-${CIRCLE_SHA1}'
+          tag: 'asia.gcr.io/${GOOGLE_PROJECT_ID}/test-${CIRCLE_SHA1}'
       - cloud-run/deploy:
-          image: 'gcr.io/${GOOGLE_PROJECT_ID}/test-${CIRCLE_SHA1}'
+          image: 'asia.gcr.io/${GOOGLE_PROJECT_ID}/test-${CIRCLE_SHA1}'
           platform: managed
-          region: us-central1
+          region: asia-northeast1-b
           service-name: cci-gcr-currency
           unauthenticated: true
