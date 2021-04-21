@@ -46,7 +46,7 @@ jobs:
       - run:
           command: mkdir reports
       - run:
-          command: npx eslint . --ext .js --fromat junit --output-file ./reports/eslint/eslint.xml
+          command: npx eslint . --ext .js --format junit --output-file ./reports/eslint/eslint.xml
       - run:
           command: npx nyc --silent npx mocha ./test/*.test.js --reporter mocha-junit-reporter
           environment:
