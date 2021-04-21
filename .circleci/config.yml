@@ -70,6 +70,6 @@ jobs:
       - cloud-run/deploy:
           image: 'asia.gcr.io/${GOOGLE_PROJECT_ID}/test-${CIRCLE_SHA1}'
           platform: managed
-          region: asia-northeast1-b
+          region: asia-northeast1
           service-name: cci-gcr-currency
           unauthenticated: true
