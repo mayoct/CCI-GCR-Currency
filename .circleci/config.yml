@@ -61,7 +61,7 @@ jobs:
           path: ./coverage
   deploy_api:
     docker:
-      - image: 'google/cloud-sdk'
+      - image: 'cimg/base:stable'
     steps:
       - checkout
       - cloud-run/init
