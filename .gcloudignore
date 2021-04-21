@@ -3,4 +3,6 @@
 
 # upload list
 !.
+!app.js
+!Dockerfile
 !package.json
