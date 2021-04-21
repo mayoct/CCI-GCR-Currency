@@ -27,8 +27,8 @@ app.get('/api/convert', (req, res) => {
 
     var value = parseFloat(req.query.value);
     var amount =
-        value * currency.rate;
-        //Math.round(value * currency.rate * 100) / 100;
+        Math.round(value * currency.rate * 100) / 100;
+        //value * currency.rate;
     res.status(200).send({ 'amount': amount });
 });
 
