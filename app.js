@@ -1,8 +1,6 @@
 const express = require('express');
 
-// Constants
-const PORT = process.env.PORT || 8080;
-const HOST = '0.0.0.0'
+// 通貨変換テーブル
 const currencyArray = [
     { unit: "JPY", rate: 1 },
     { unit: "USD", rate: 104.49 },
@@ -11,7 +9,7 @@ const currencyArray = [
     { unit: "KRW", rate: 0.0892 },
   ];
   
-// App
+// APIの実装
 const app = express();
 app.use(express.json());
 
@@ -26,11 +24,15 @@ app.get('/api/convert', (req, res) => {
     if (! currency) return res.status(200).send({'error': 'unitNotSupported'});
 
     var value = parseFloat(req.query.value);
-    var amount =
-        Math.round(value * currency.rate * 100) / 100;
-        //value * currency.rate;
+    var amount = value * currency.rate;
     res.status(200).send({ 'amount': amount });
 });
 
+// Server
+const PORT = process.env.PORT || 8080;
+const HOST = '0.0.0.0'
 module.exports = app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
+
+//var amount =
+//Math.round(value * currency.rate * 100) / 100;
