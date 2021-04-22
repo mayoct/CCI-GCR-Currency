@@ -25,7 +25,8 @@ app.get('/api/convert', (req, res) => {
     if (! currency) return res.status(200).send({'error': 'unitNotSupported'});
 
     var value = parseFloat(req.query.value);
-    var amount = value * currency.rate;
+    var amount =
+        Math.round(value * currency.rate * 100) / 100;
     res.status(200).send({ 'amount': amount });
 });
 
