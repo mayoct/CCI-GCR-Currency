@@ -33,6 +33,3 @@ const PORT = process.env.PORT || 8080;
 const HOST = '0.0.0.0'
 module.exports = app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
-
-//var amount =
-//Math.round(value * currency.rate * 100) / 100;
