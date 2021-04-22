@@ -12,9 +12,12 @@ workflows:
       - test_api:
           requires:
             - build_api
-      - deploy_api:
+      - release_api:
           requires:
             - test_api
+      - deploy_api:
+          requires:
+            - release_api
 
 jobs:
   build_api:
@@ -59,7 +62,7 @@ jobs:
           path: ./reports
       - store_artifacts:
           path: ./coverage
-  deploy_api:
+  release_api:
     docker:
       - image: 'cimg/base:stable'
     steps:
@@ -67,6 +70,12 @@ jobs:
       - cloud-run/init
       - cloud-run/build:
           tag: 'asia.gcr.io/${GOOGLE_PROJECT_ID}/test-${CIRCLE_SHA1}'
+  deploy_api:
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
+      - checkout
+      - cloud-run/init
       - cloud-run/deploy:
           image: 'asia.gcr.io/${GOOGLE_PROJECT_ID}/test-${CIRCLE_SHA1}'
           platform: managed
