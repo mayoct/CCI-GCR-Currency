@@ -20,7 +20,7 @@ describe("GET /api/convert", () => {
             .get('/api/convert?unit=USD&value=10')
             .end((err, res) => {
                 expect(res).to.have.status(200);
-                expect(res.body.amount).to.equals(1044.9);
+                expect(res.body.amount).to.equals(1044.90);
                 done();                
             });
     });    
