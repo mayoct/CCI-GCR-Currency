@@ -7,7 +7,6 @@ const currencyArray = [
     { unit: "EUR", rate: 124.86 },
     { unit: "CNY", rate: 15.21 },
     { unit: "KRW", rate: 0.0892 },
-    { unit: "AUD", rate: 83.62 },
   ];
   
 // APIの実装
